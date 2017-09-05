@@ -20,6 +20,22 @@ class Relacion{
 	Relacion(){
 		sig = NULL;
 	}
+
+	int getEstadoRelacionado(){
+		return estadoRelacionado;
+	}
+
+	string getCaracter(){
+		return caracter;
+	}
+
+	char getExcepcion(){
+		return excepcion;
+	}
+
+	Relacion *getSiguiente(){
+		return sig;
+	}
 	
 };
 
@@ -260,7 +276,7 @@ class Grafo{
                 cout<<"Ya esta relacionado!"<<endl;
             }
         }else{
-        	cout<<"No se puede realizar la relacion "<<estadoOrigen<<" <> "<<estadoLlegada<<" <> "<<caracter<<" <> "<<excepcion<<endl;
+        	cout<<"No se puede realizar la relacion "<<endl;
 		}
     }
     
@@ -480,12 +496,39 @@ void leerTexto(){
 }
 
 main(){
-	leer();
 	
-	leerTexto();
-	//analizarTexto("print p4 23f + - print kks pr3");
-	//string a = "+";
-	//cout<<a[0];
+	leer();
+
+	int opcionMenu;	
+	
+	do{
+		system("cls");
+		cout<<"\t\t\tMenu"<<endl<<"1.Leer archivo de texto."<<endl<<"2.Mostrar nodos."<<endl<<"3.Mostrar nodos y sus relacionados."<<endl<<"4.Salir"<<endl<<"Opcion: ";
+		cin>>opcionMenu;
+		switch(opcionMenu){
+			case 1:{
+				system("cls");
+				cout<<endl<<"Palabras:"<<endl<<endl;
+				leerTexto();
+				system("PAUSE>NULL");				
+				break;
+			}
+			
+			case 2:{
+				system("cls");
+				g.imprimirVertices();
+				system("PAUSE>NULL");
+				break;
+			}
+
+			case 3:{
+				system("cls");
+				g.imprimirVerticesWAdy();
+				system("PAUSE>NULL");
+				break;
+			}
+		}
+	}while(opcionMenu != 4);
 	
 	/*g.agregarVertice(0);
 	g.agregarVertice(1, "SUMAR");
@@ -500,10 +543,10 @@ main(){
 	g.agregarVertice(10);
 	g.agregarVertice(11);
 	g.agregarVertice(12, "IMPRIMIR");
-	g.agregarVertice(13, "LETRAS");
+	g.agregarVertice(13, "LETRAS");*/
 	
 	
-	g.relacionar(0, 1, "+", NULL);
+	/*g.relacionar(0, 1, "+", NULL);
 	g.relacionar(0, 2, "-", NULL);
 	g.relacionar(0, 3, "=", NULL);
 	g.relacionar(0, 4, "1-9", '0');
@@ -525,15 +568,7 @@ main(){
 	g.relacionar(11, 6, "letra", 't');
 	g.relacionar(11, 12, "t", NULL);
 	g.relacionar(11, 13, "otro", NULL);*/
-	//cout<<g.esta(12)->token<<endl;
-	
-	
-	//g.imprimirVertices();
-	
-	
-	
-	g.imprimirVerticesWAdy();
-	
+
 	system("PAUSE>NULL");
 }
 
